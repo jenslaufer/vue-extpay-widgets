@@ -1089,10 +1089,10 @@ const Y = ({ extensionId: A } = {}) => {
   const m = U(A);
   return {
     start: () => {
-      p || (p = !0, console.log(">>>>>>> Payment service started"), m.startBackground());
+      p || (p = !0, console.log("Payment service started"), m.startBackground());
     },
     stop: () => {
-      p = !1, console.log(">>>>>>> Payment service stopped"), m.stopBackground();
+      p = !1, console.log("Payment service stopped"), m.stopBackground();
     },
     get started() {
       return p;
