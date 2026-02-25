@@ -8,13 +8,13 @@ export const createPaymentService = ({ extensionId } = {}) => {
         if (started) return
 
         started = true
-        console.log(">>>>>>> Payment service started")
+        console.log("Payment service started")
         extpay.startBackground();
     }
 
     const stop = () => {
         started = false
-        console.log(">>>>>>> Payment service stopped")
+        console.log("Payment service stopped")
         extpay.stopBackground();
     }
 
