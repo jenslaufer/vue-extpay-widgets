@@ -13,6 +13,7 @@ export const createPaymentService = ({ extensionId } = {}) => {
 
     const stop = () => {
         started = false
+
         console.log(">>>>>>> Payment service stopped")
 
         extpay.stopBackground();

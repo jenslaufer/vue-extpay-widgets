@@ -1,5 +1,6 @@
 <template>
-    <slot name="paid" v-if="hasPaid" />
+    <slot name="loading" v-if="isLoading" />
+    <slot name="paid" v-else-if="hasPaid" />
     <slot name="unpaid" v-else :open-payment="openPayment" />
 </template>
 <script setup>
@@ -16,6 +17,7 @@ import ExtPay from 'extpay'
 
 const extpay = ExtPay(props.extensionId)
 const hasPaid = ref(false)
+const isLoading = ref(true)
 
 const openPayment = () => extpay.openPaymentPage()
 
@@ -24,5 +26,6 @@ onMounted(async () => {
     if (user && user.paidAt) {
         hasPaid.value = true
     }
+    isLoading.value = false
 })
 </script>
