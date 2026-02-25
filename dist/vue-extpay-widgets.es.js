@@ -1,13 +1,13 @@
-import { ref as U, onMounted as q, renderSlot as I } from "vue";
-var L = { exports: {} }, G = L.exports, F;
+import { ref as F, onMounted as q, renderSlot as I } from "vue";
+var L = { exports: {} }, G = L.exports, W;
 function z() {
-  return F || (F = 1, (function(A, x) {
-    (function(m, b) {
-      b(A);
+  return W || (W = 1, (function(A, p) {
+    (function(m, w) {
+      w(A);
     })(typeof globalThis < "u" ? globalThis : typeof self < "u" ? self : G, function(m) {
       if (typeof browser > "u" || Object.getPrototypeOf(browser) !== Object.prototype) {
-        const b = "The message port closed before a response was received.", k = "Returning a Promise is the preferred way to send a reply from an onMessage/onMessageExternal listener, as the sendResponse will be removed from the specs (See https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage)", y = (h) => {
-          const E = {
+        const w = "The message port closed before a response was received.", b = "Returning a Promise is the preferred way to send a reply from an onMessage/onMessageExternal listener, as the sendResponse will be removed from the specs (See https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage)", k = (x) => {
+          const P = {
             alarms: {
               clear: {
                 minArgs: 0,
@@ -679,7 +679,7 @@ function z() {
               }
             }
           };
-          if (Object.keys(E).length === 0)
+          if (Object.keys(P).length === 0)
             throw new Error("api-metadata.json has not been included in browser-polyfill");
           class $ extends WeakMap {
             constructor(r, n = void 0) {
@@ -690,39 +690,39 @@ function z() {
             }
           }
           const v = (s) => s && typeof s == "object" && typeof s.then == "function", N = (s, r) => (...n) => {
-            h.runtime.lastError ? s.reject(h.runtime.lastError) : r.singleCallbackArg || n.length <= 1 && r.singleCallbackArg !== !1 ? s.resolve(n[0]) : s.resolve(n);
+            x.runtime.lastError ? s.reject(x.runtime.lastError) : r.singleCallbackArg || n.length <= 1 && r.singleCallbackArg !== !1 ? s.resolve(n[0]) : s.resolve(n);
           }, _ = (s) => s == 1 ? "argument" : "arguments", B = (s, r) => function(i, ...u) {
             if (u.length < r.minArgs)
               throw new Error(`Expected at least ${r.minArgs} ${_(r.minArgs)} for ${s}(), got ${u.length}`);
             if (u.length > r.maxArgs)
               throw new Error(`Expected at most ${r.maxArgs} ${_(r.maxArgs)} for ${s}(), got ${u.length}`);
-            return new Promise((p, d) => {
+            return new Promise((d, f) => {
               if (r.fallbackToNoCallback)
                 try {
                   i[s](...u, N({
-                    resolve: p,
-                    reject: d
+                    resolve: d,
+                    reject: f
                   }, r));
                 } catch (a) {
-                  console.warn(`${s} API method doesn't seem to support the callback parameter, falling back to call it without a callback: `, a), i[s](...u), r.fallbackToNoCallback = !1, r.noCallback = !0, p();
+                  console.warn(`${s} API method doesn't seem to support the callback parameter, falling back to call it without a callback: `, a), i[s](...u), r.fallbackToNoCallback = !1, r.noCallback = !0, d();
                 }
-              else r.noCallback ? (i[s](...u), p()) : i[s](...u, N({
-                resolve: p,
-                reject: d
+              else r.noCallback ? (i[s](...u), d()) : i[s](...u, N({
+                resolve: d,
+                reject: f
               }, r));
             });
           }, C = (s, r, n) => new Proxy(r, {
-            apply(i, u, p) {
-              return n.call(u, s, ...p);
+            apply(i, u, d) {
+              return n.call(u, s, ...d);
             }
           });
           let T = Function.call.bind(Object.prototype.hasOwnProperty);
           const j = (s, r = {}, n = {}) => {
             let i = /* @__PURE__ */ Object.create(null), u = {
-              has(d, a) {
+              has(f, a) {
                 return a in s || a in i;
               },
-              get(d, a, f) {
+              get(f, a, y) {
                 if (a in i)
                   return i[a];
                 if (!(a in s))
@@ -753,17 +753,17 @@ function z() {
                   }), c;
                 return i[a] = c, c;
               },
-              set(d, a, f, c) {
-                return a in i ? i[a] = f : s[a] = f, !0;
+              set(f, a, y, c) {
+                return a in i ? i[a] = y : s[a] = y, !0;
               },
-              defineProperty(d, a, f) {
-                return Reflect.defineProperty(i, a, f);
+              defineProperty(f, a, y) {
+                return Reflect.defineProperty(i, a, y);
               },
-              deleteProperty(d, a) {
+              deleteProperty(f, a) {
                 return Reflect.deleteProperty(i, a);
               }
-            }, p = Object.create(s);
-            return new Proxy(p, u);
+            }, d = Object.create(s);
+            return new Proxy(d, u);
           }, R = (s) => ({
             addListener(r, n, ...i) {
               r.addListener(s.get(n), ...i);
@@ -775,51 +775,51 @@ function z() {
               r.removeListener(s.get(n));
             }
           });
-          let P = !1;
+          let E = !1;
           const O = new $((s) => typeof s != "function" ? s : function(n, i, u) {
-            let p = !1, d, a = new Promise((M) => {
-              d = function(w) {
-                P || (console.warn(k, new Error().stack), P = !0), p = !0, M(w);
+            let d = !1, f, a = new Promise((M) => {
+              f = function(h) {
+                E || (console.warn(b, new Error().stack), E = !0), d = !0, M(h);
               };
-            }), f;
+            }), y;
             try {
-              f = s(n, i, d);
+              y = s(n, i, f);
             } catch (M) {
-              f = Promise.reject(M);
+              y = Promise.reject(M);
             }
-            const c = f !== !0 && v(f);
-            if (f !== !0 && !c && !p)
+            const c = y !== !0 && v(y);
+            if (y !== !0 && !c && !d)
               return !1;
             const S = (M) => {
-              M.then((w) => {
-                u(w);
-              }, (w) => {
+              M.then((h) => {
+                u(h);
+              }, (h) => {
                 let D;
-                w && (w instanceof Error || typeof w.message == "string") ? D = w.message : D = "An unexpected error occurred", u({
+                h && (h instanceof Error || typeof h.message == "string") ? D = h.message : D = "An unexpected error occurred", u({
                   __mozWebExtensionPolyfillReject__: !0,
                   message: D
                 });
-              }).catch((w) => {
-                console.error("Failed to send onMessage rejected reply", w);
+              }).catch((h) => {
+                console.error("Failed to send onMessage rejected reply", h);
               });
             };
-            return S(c ? f : a), !0;
+            return S(c ? y : a), !0;
           }), e = ({
             reject: s,
             resolve: r
           }, n) => {
-            h.runtime.lastError ? h.runtime.lastError.message === b ? r() : s(h.runtime.lastError) : n && n.__mozWebExtensionPolyfillReject__ ? s(new Error(n.message)) : r(n);
+            x.runtime.lastError ? x.runtime.lastError.message === w ? r() : s(x.runtime.lastError) : n && n.__mozWebExtensionPolyfillReject__ ? s(new Error(n.message)) : r(n);
           }, t = (s, r, n, ...i) => {
             if (i.length < r.minArgs)
               throw new Error(`Expected at least ${r.minArgs} ${_(r.minArgs)} for ${s}(), got ${i.length}`);
             if (i.length > r.maxArgs)
               throw new Error(`Expected at most ${r.maxArgs} ${_(r.maxArgs)} for ${s}(), got ${i.length}`);
-            return new Promise((u, p) => {
-              const d = e.bind(null, {
+            return new Promise((u, d) => {
+              const f = e.bind(null, {
                 resolve: u,
-                reject: p
+                reject: d
               });
-              i.push(d), n.sendMessage(...i);
+              i.push(f), n.sendMessage(...i);
             });
           }, o = {
             runtime: {
@@ -850,7 +850,7 @@ function z() {
               maxArgs: 1
             }
           };
-          return E.privacy = {
+          return P.privacy = {
             network: {
               "*": l
             },
@@ -860,11 +860,11 @@ function z() {
             websites: {
               "*": l
             }
-          }, j(h, o, E);
+          }, j(x, o, P);
         };
         if (typeof chrome != "object" || !chrome || !chrome.runtime || !chrome.runtime.id)
           throw new Error("This script should only be loaded in a browser extension.");
-        m.exports = y(chrome);
+        m.exports = k(chrome);
       } else
         m.exports = browser;
     });
@@ -874,19 +874,19 @@ var g = z();
 typeof window < "u" && window.addEventListener("message", (A) => {
   A.origin === "https://extensionpay.com" && A.source == window && (A.data === "extpay-fetch-user" || A.data === "extpay-trial-start") && (window.postMessage(`${A.data}-received`), g.runtime.sendMessage(A.data));
 }, !1);
-function W(A) {
-  const x = "https://extensionpay.com", m = `${x}/extension/${A}`;
-  function b(e) {
+function U(A) {
+  const p = "https://extensionpay.com", m = `${p}/extension/${A}`;
+  function w(e) {
     return new Promise((t) => setTimeout(t, e));
   }
-  async function k(e) {
+  async function b(e) {
     try {
       return await g.storage.sync.get(e);
     } catch {
       return await g.storage.local.get(e);
     }
   }
-  async function y(e) {
+  async function k(e) {
     try {
       return await g.storage.sync.set(e);
     } catch {
@@ -907,12 +907,12 @@ You can copy and paste this to your manifest.json file to fix this error:
 ]
 `;
     }
-  }), k(["extensionpay_installed_at", "extensionpay_user"]).then(async (e) => {
+  }), b(["extensionpay_installed_at", "extensionpay_user"]).then(async (e) => {
     if (e.extensionpay_installed_at) return;
     const t = e.extensionpay_user, o = t ? t.installedAt : (/* @__PURE__ */ new Date()).toISOString();
-    await y({ extensionpay_installed_at: o });
+    await k({ extensionpay_installed_at: o });
   });
-  const h = [], E = [];
+  const x = [], P = [];
   async function $() {
     var e = {}, t;
     if (g.management)
@@ -931,17 +931,17 @@ You can copy and paste this to your manifest.json file to fix this error:
       body: JSON.stringify(e)
     });
     if (!o.ok)
-      throw o.status, `${x}/home`;
+      throw o.status, `${p}/home`;
     const l = await o.json();
-    return await y({ extensionpay_api_key: l }), l;
+    return await k({ extensionpay_api_key: l }), l;
   }
   async function v() {
-    const e = await k(["extensionpay_api_key"]);
+    const e = await b(["extensionpay_api_key"]);
     return e.extensionpay_api_key ? e.extensionpay_api_key : null;
   }
   const N = /^\d\d\d\d-\d\d-\d\dT/;
   async function _() {
-    var e = await k(["extensionpay_user", "extensionpay_installed_at"]);
+    var e = await b(["extensionpay_user", "extensionpay_installed_at"]);
     const t = await v();
     if (!t)
       return {
@@ -961,7 +961,7 @@ You can copy and paste this to your manifest.json file to fix this error:
     const l = await o.json(), s = {};
     for (var [r, n] of Object.entries(l))
       n && n.match && n.match(N) && (n = new Date(n)), s[r] = n;
-    return s.installedAt = new Date(e.extensionpay_installed_at), s.paidAt && (!e.extensionpay_user || e.extensionpay_user && !e.extensionpay_user.paidAt) && h.forEach((i) => i(s)), s.trialStartedAt && (!e.extensionpay_user || e.extensionpay_user && !e.extensionpay_user.trialStartedAt) && E.forEach((i) => i(s)), await y({ extensionpay_user: l }), s;
+    return s.installedAt = new Date(e.extensionpay_installed_at), s.paidAt && (!e.extensionpay_user || e.extensionpay_user && !e.extensionpay_user.paidAt) && x.forEach((i) => i(s)), s.trialStartedAt && (!e.extensionpay_user || e.extensionpay_user && !e.extensionpay_user.trialStartedAt) && P.forEach((i) => i(s)), await k({ extensionpay_user: l }), s;
   }
   async function B() {
     const e = await fetch(`${m}/api/v2/current-plans`, {
@@ -1019,16 +1019,16 @@ You can copy and paste this to your manifest.json file to fix this error:
     const t = `${m}/reactivate?api_key=${e}&back=choose-plan&v2`;
     C(t, 500, 800);
   }
-  var P = !1;
+  var E = !1;
   async function O() {
-    if (!P) {
-      P = !0;
+    if (!E) {
+      E = !0;
       for (var e = await _(), t = 0; t < 120; ++t) {
         if (e.paidAt)
-          return P = !1, e;
-        await b(1e3), e = await _();
+          return E = !1, e;
+        await w(1e3), e = await _();
       }
-      P = !1;
+      E = !1;
     }
   }
   return {
@@ -1039,7 +1039,7 @@ You can copy and paste this to your manifest.json file to fix this error:
       addListener: function(e) {
         const t = `"content_scripts": [
                 {
-            "matches": ["${x}/*"],
+            "matches": ["${p}/*"],
             "js": ["ExtPay.js"],
             "run_at": "document_start"
         }]`, o = g.runtime.getManifest();
@@ -1047,17 +1047,17 @@ You can copy and paste this to your manifest.json file to fix this error:
           throw `ExtPay setup error: To use the onPaid callback handler, please include ExtPay as a content script in your manifest.json. You can copy the example below into your manifest.json or check the docs: https://github.com/Glench/ExtPay#2-configure-your-manifestjson
 
         ${t}`;
-        const l = o.content_scripts.find((s) => s.matches.includes(x.replace(":3000", "") + "/*"));
+        const l = o.content_scripts.find((s) => s.matches.includes(p.replace(":3000", "") + "/*"));
         if (l) {
           if (!l.run_at || l.run_at !== "document_start")
             throw `ExtPay setup error: To use the onPaid callback handler, please make sure the ExtPay content script in your manifest.json runs at document start. You can copy the example below into your manifest.json or check the docs: https://github.com/Glench/ExtPay#2-configure-your-manifestjson
 
         ${t}`;
         } else
-          throw `ExtPay setup error: To use the onPaid callback handler, please include ExtPay as a content script in your manifest.json matching "${x}/*". You can copy the example below into your manifest.json or check the docs: https://github.com/Glench/ExtPay#2-configure-your-manifestjson
+          throw `ExtPay setup error: To use the onPaid callback handler, please include ExtPay as a content script in your manifest.json matching "${p}/*". You can copy the example below into your manifest.json or check the docs: https://github.com/Glench/ExtPay#2-configure-your-manifestjson
 
         ${t}`;
-        h.push(e);
+        x.push(e);
       }
       // removeListener: function(callback) {
       //     // TODO
@@ -1069,7 +1069,7 @@ You can copy and paste this to your manifest.json file to fix this error:
     openLoginPage: R,
     onTrialStarted: {
       addListener: function(e) {
-        E.push(e);
+        P.push(e);
       }
     },
     startBackground: function() {
@@ -1085,23 +1085,23 @@ You can copy and paste this to your manifest.json file to fix this error:
   };
 }
 const Y = ({ extensionId: A } = {}) => {
-  let x = !1;
-  const m = W(A);
+  let p = !1;
+  const m = U(A);
   return {
     start: () => {
-      x || (console.log(">>>>>>> Payment service started"), m.startBackground());
+      p || (console.log(">>>>>>> Payment service started"), m.startBackground());
     },
     stop: () => {
-      x = !1, console.log(">>>>>>> Payment service stopped"), m.stopBackground();
+      p = !1, console.log(">>>>>>> Payment service stopped"), m.stopBackground();
     },
     get started() {
-      return x;
+      return p;
     }
   };
 }, H = /* @__PURE__ */ Symbol("payment-service"), V = {
-  install: (A, x = {}) => {
-    const m = Y(x);
-    A.provide(H, m), A.config.globalProperties.$paymentService = m, x.autoStart !== !1 && m.start();
+  install: (A, p = {}) => {
+    const m = Y(p);
+    A.provide(H, m), A.config.globalProperties.$paymentService = m, p.autoStart !== !1 && m.start();
   }
 }, K = {
   __name: "ExtPay",
@@ -1112,12 +1112,12 @@ const Y = ({ extensionId: A } = {}) => {
     }
   },
   setup(A) {
-    const m = W(A.extensionId), b = U(!1), k = () => m.openPaymentPage();
+    const m = U(A.extensionId), w = F(!1), b = F(!0), k = () => m.openPaymentPage();
     return q(async () => {
-      const y = await m.getUser().catch(() => null);
-      y && y.paidAt && (b.value = !0);
-    }), (y, h) => b.value ? I(y.$slots, "paid", { key: 0 }) : I(y.$slots, "unpaid", {
-      key: 1,
+      const x = await m.getUser().catch(() => null);
+      x && x.paidAt && (w.value = !0), b.value = !1;
+    }), (x, P) => b.value ? I(x.$slots, "loading", { key: 0 }) : w.value ? I(x.$slots, "paid", { key: 1 }) : I(x.$slots, "unpaid", {
+      key: 2,
       openPayment: k
     });
   }
