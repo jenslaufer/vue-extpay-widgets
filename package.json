@@ -1,0 +1,34 @@
+{
+    "name": "@solytics/vue-extpay-widgets",
+    "version": "0.1.0",
+    "private": false,
+    "type": "module",
+    "main": "dist/vue-extpay-widgets.umd.cjs",
+    "module": "dist/vue-extpay-widgets.es.js",
+    "exports": {
+        ".": {
+            "import": "./dist/vue-extpay-widgets.es.js",
+            "require": "./dist/vue-extpay-widgets.umd.cjs"
+        }
+    },
+    "files": [
+        "dist",
+        "README.md",
+        "LICENSE"
+    ],
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "peerDependencies": {
+        "vue": "^3.3.0 || ^3.4.0 || ^3.5.0"
+    },
+    "dependencies": {
+        "extpay": "^3.1.2"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^6.0.0",
+        "vite": "^7.0.4"
+    }
+}
