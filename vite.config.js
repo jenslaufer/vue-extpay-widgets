@@ -16,6 +16,10 @@ export default defineConfig({
                     vue: 'Vue',
                 },
             },
+            onwarn(warning, warn) {
+                if (warning.code === 'UNUSED_EXTERNAL_IMPORT') return
+                warn(warning)
+            },
         },
     },
 })
